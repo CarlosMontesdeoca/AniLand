@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFundationsTable extends Migration
+class CreatePetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateFundationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('fundations', function (Blueprint $table) {
+        Schema::create('pets', function (Blueprint $table) {
             $table->id();
+            $table->string('type');
+            $table->text('description');
+            $table->unsignedBigInteger('fundation_id');
+            $table->foreign('fundation_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateFundationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fundations');
+        Schema::dropIfExists('pets');
     }
 }

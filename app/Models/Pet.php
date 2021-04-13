@@ -5,17 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+class Pet extends Model
 {
-    protected$fillable = [
-        'body'
-    ];
-    
     use HasFactory;
 
-    public function comments(){
-        return $this->hasMany('App\Models\Comment');
-    }
+    protected $fillable = [
+        'type',
+        'description',
+    ];
 
     public function user(){
         return $this->belongsTo('App\Models\User');
